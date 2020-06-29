@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  app:
+    image: bitwardenrs/server:1.15.1
+    restart: always
+    volumes:
+      - data:/data
+    environment:
+      - WEBSOCKET_ENABLED=true
+      - SIGNUPS_ALLOWED=false
+      - SHOW_PASSWORD_HINT=false
+      - ADMIN_TOKEN
+      - DOMAIN
+      - SMTP_HOST
+      - SMTP_FROM
+      - SMTP_PORT
+      - SMTP_SSL
+      - SMTP_USERNAME
+      - SMTP_PASSWORD
+  web:
+    build: ./web
+    restart: always
+    ports:
+      - "3012:3012"
+    environment:
+      - VIRTUAL_HOST
+      - LETSENCRYPT_HOST
+      - LETSENCRYPT_EMAIL
+    depends_on:
+      - app
+
+volumes:
+  data:
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
