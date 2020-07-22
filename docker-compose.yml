@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    image: bitwardenrs/server:1.15.1
+    image: bitwardenrs/server:1.16.0
     restart: always
     volumes:
       - data:/data
