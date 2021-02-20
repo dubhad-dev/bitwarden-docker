@@ -18,6 +18,9 @@ services:
       - SMTP_SSL
       - SMTP_USERNAME
       - SMTP_PASSWORD
+    networks:
+      - default
+      
   web:
     build: ./web
     restart: always
@@ -27,6 +30,9 @@ services:
       - VIRTUAL_HOST
       - LETSENCRYPT_HOST
       - LETSENCRYPT_EMAIL
+    networks:
+      - default
+      - proxy
     depends_on:
       - app
 
@@ -34,6 +40,6 @@ volumes:
   data:
 
 networks:
-  default:
+  proxy:
     external:
       name: nginx-proxy
