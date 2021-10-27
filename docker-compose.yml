@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    image: vaultwarden/server:1.22.1
+    image: vaultwarden/server:1.23.0
     restart: always
     volumes:
       - data:/data
@@ -41,5 +41,5 @@ volumes:
 
 networks:
   proxy:
-    external:
-      name: nginx-proxy
+    name: nginx-proxy
+    external: true
