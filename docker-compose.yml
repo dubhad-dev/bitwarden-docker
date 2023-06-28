@@ -1,6 +1,6 @@
 services:
   app:
-    image: vaultwarden/server:1.27.0
+    image: vaultwarden/server:1.28.1
     restart: always
     volumes:
       - data:/data
