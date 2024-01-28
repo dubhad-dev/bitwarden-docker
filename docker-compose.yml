@@ -22,6 +22,8 @@ services:
     networks:
       - default
       - proxy
+    labels:
+      - docker-volume-backup.stop-during-backup=bitwarden
 
 volumes:
   data:
